@@ -1,6 +1,7 @@
 FROM ubuntu:22.04
 
-COPY bin/* /usr/local/bin/ conf/* /etc/
+COPY bin/* /usr/local/bin/
+COPY conf/* /etc/
 
 RUN export DEBIAN_FRONTEND=noninteractive; \
     apt-get update; \
@@ -17,4 +18,4 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
 
 ENTRYPOINT ["init"]
 
-CMD [ "supervisord","-c","/usr/local/conf/supervisord.conf" ]
+CMD [ "supervisord","-c","/etc/supervisord.conf" ]
