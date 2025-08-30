@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
-sed -i "s/UUID/$UUID/g" /usr/local/etc/xy.json
+sed -i "s/UUID/$UUID/g" /app/xy.json
 
 exec "$@"
