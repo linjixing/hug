@@ -1,7 +1,6 @@
 FROM ubuntu:22.04
 
-COPY bin/* /usr/local/bin/
-COPY etc/* /usr/local/etc/
+COPY local /usr/local
 
 RUN export DEBIAN_FRONTEND=noninteractive; \
     apt-get update; \
