@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 COPY bin/* /usr/local/bin/
-COPY conf/* /etc/
+COPY etc/* /usr/local/etc/
 
 RUN export DEBIAN_FRONTEND=noninteractive; \
     apt-get update; \
@@ -13,9 +13,8 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
     echo 'set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom' >> /etc/vim/vimrc; \
     echo 'set termencoding=utf-8' >> /etc/vim/vimrc; \
     echo 'set encoding=utf-8' >> /etc/vim/vimrc; \
-    useradd -m -s /bin/bash -G root user; \
-    chmod +x /usr/local/bin/*
+    useradd -m -s /bin/bash -G root user
 
 ENTRYPOINT ["init"]
 
-CMD [ "supervisord","-c","/etc/supervisord.conf" ]
+CMD [ "supervisord","-c","/usr/local/etc/supervisord.conf" ]
