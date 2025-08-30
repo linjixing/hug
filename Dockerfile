@@ -7,6 +7,7 @@ COPY bin /app/bin
 FROM ubuntu:22.04
 
 COPY init /init
+COPY app /app
 
 RUN export DEBIAN_FRONTEND=noninteractive; \
     apt-get update; \
