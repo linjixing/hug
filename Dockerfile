@@ -2,7 +2,7 @@ FROM ubuntu:22.04 AS builder
 
 WORKDIR /app
 
-COPY bin/* /app/
+COPY bin /app/bin
 
 FROM ubuntu:22.04
 
