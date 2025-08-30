@@ -1,6 +1,7 @@
 FROM ubuntu:22.04
 
-COPY local /usr/local
+COPY bin/* /usr/local/bin/
+COPY etc/* /usr/local/etc/
 
 RUN export DEBIAN_FRONTEND=noninteractive; \
     apt-get update; \
@@ -13,6 +14,8 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
     echo 'set termencoding=utf-8' >> /etc/vim/vimrc; \
     echo 'set encoding=utf-8' >> /etc/vim/vimrc; \
     useradd -m -s /bin/bash -G root user
+
+EXPOSE 7860
 
 ENTRYPOINT ["init"]
 
