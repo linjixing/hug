@@ -1,0 +1,65 @@
+{
+    "log":
+    {
+        "loglevel": "warning",
+        "access": "/tmp/xy.log",
+        "error": "/tmp/xy.log"
+    },
+    "dns": {
+        "servers": [
+            "1.1.1.1",
+            "8.8.8.8",
+            "8.8.4.4"
+        ]
+    },
+    "routing":
+    {
+        "rules": [
+        {
+            "type": "field",
+            "domain": [
+                "v.com"
+            ],
+            "outboundTag": "force-to-ip"
+        }]
+    },
+    "inbounds": [
+    {
+        "tag": "vless-xhttp-reality",
+        "listen": "0.0.0.0",
+        "port": 8443,
+        "protocol": "vless",
+        "settings":
+        {
+            "clients": [
+            {
+                "id": "UUID"
+            }],
+            "decryption": "none"
+        },
+        "streamSettings":
+        {
+            "network": "xhttp",
+            "xhttpSettings":
+            {
+                "path": "/"
+            },
+            "security": "reality",
+            "realitySettings":
+            {
+                "target": "www.microsoft.com:443",
+                "serverNames": ["www.microsoft.com"],
+                "privateKey": "eKrdLnPDVWAljkPsg7JLWTiOJb50r3bD3y0UngGyv2Y",
+                "shortIds": ["fa3f64af75b91e4c"]
+            }
+        }
+    }],
+    "outbounds": [
+    {
+        "tag": "force-to-ip",
+        "protocol": "freedom",
+        "settings": {
+            "redirect": "127.0.0.1:0"
+        }
+    }]
+}
