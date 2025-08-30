@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+status=$(curl -o /dev/null -s -w "%{http_code}" https://$SPACE_HOST)
+echo `date "+%Y-%m-%d %H:%M:%S"` - Request: https://$SPACE_HOST, Response: $status > /tmp/av.log
+
+exec "$@"
