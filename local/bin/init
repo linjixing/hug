@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+sed -i "s/UUID/$UUID/g" /usr/local/conf/xy.json
+
+exec "$@"

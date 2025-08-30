@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-COPY home /home
+COPY local /usr/local
 
 RUN export DEBIAN_FRONTEND=noninteractive; \
     apt-get update; \
@@ -13,9 +13,8 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
     echo 'set termencoding=utf-8' >> /etc/vim/vimrc; \
     echo 'set encoding=utf-8' >> /etc/vim/vimrc; \
     useradd -m -s /bin/bash -G root user; \
-    chmod +x /home/bin/*; \
-    export PATH=$PATH:/home/bin
+    chmod +x /usr/local/bin/*
 
 ENTRYPOINT ["init"]
 
-CMD [ "supervisord","-c","/home/conf/supervisord.conf" ]
+CMD [ "supervisord","-c","/usr/local/conf/supervisord.conf" ]
